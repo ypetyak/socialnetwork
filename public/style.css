@@ -1,0 +1,969 @@
+*,
+html {
+    margin: 0;
+    box-sizing: border-box;
+    /* background: lightgrey; */
+}
+
+html,
+main,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainBox {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px;
+    font-size: 50px;
+    font-family: "Helvetica Neue";
+}
+
+.mainBox .welcomeText {
+    padding-top: 10px;
+    padding: 5px;
+    font-size: 75px;
+    font-weight: normal;
+    font-family: "Helvetica Neue";
+    color: SkyBlue;
+}
+
+.mainBox .alreadyRegistredText {
+    padding: 5px;
+    font-family: "Helvetica Neue";
+    font-weight: normal;
+    font-size: 20px;
+    padding: 20px;
+    color: SkyBlue;
+}
+
+.register {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 2px solid lightblue; */
+    padding: 10px;
+    /* padding-top: 15px; */
+    margin-top: 20px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 8px white;
+}
+
+.button {
+    width: 225px;
+    padding: 5px;
+    margin: 2px;
+    background-color: SkyBlue;
+    border: 2px solid SkyBlue;
+    cursor: pointer;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+}
+
+.button:hover {
+    /* border: 1px solid rgb(86, 180, 239); */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05) inset,
+        5px 5px 25px rgba(82, 168, 236, 0.6);
+    /* background-color: SkyBlue; */
+    opacity: 1;
+    box-shadow: 0 0 5px;
+    /* border: none ; */
+}
+
+.logoutButton {
+    margin-right: 20px;
+}
+
+.input {
+    border: 2px solid SkyBlue;
+
+    outline: none;
+    text-align: center;
+    font-size: 20px;
+    height: 40px;
+    width: 225px;
+    padding: 5px;
+    margin: 2px;
+    background-color: white;
+}
+
+input,
+select,
+textarea {
+    color: SkyBlue;
+}
+
+::placeholder {
+    color: SkyBlue;
+}
+
+.componentBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+/* ======== =======  Footet in App.js ========== ========= */
+
+.fakeFooter {
+    height: 90px;
+    width: 100%;
+    border-bottom: 2px solid SkyBlue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: SkyBlue;
+}
+
+.profilePic {
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.avatarImage {
+    width: 75px;
+    height: 75px;
+    margin-top: 10px;
+}
+
+.logo {
+    color: white;
+    font-size: 80px;
+    font-family: "Helvetica Neue";
+    /* border: 2px solid SkyBlue; */
+    /* box-shadow: 0 0 8px white; */
+    /* padding: 10px; */
+    margin-left: 10px;
+    font-weight: lighter;
+    z-index: 2;
+    position: relative;
+}
+
+.linkBoxInHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkInHeader {
+    text-align: center;
+    width: 75px;
+    line-height: 40px;
+    max-height: 75px;
+    margin-left: 20px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+    overflow: visible;
+    word-break: break-all;
+}
+
+.textTooBigInHeader {
+    text-align: center;
+    width: 105px;
+    line-height: 40px;
+    max-height: 75px;
+    margin-left: 20px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    /* border: 1px solid white; */
+    border-radius: 10px;
+overflow-wrap: break-word;
+}
+
+.linkInHeader:hover {
+    transition: border ease;
+    color: white;
+    /* background: white; */
+    opacity: 1;
+    /* border: solid 2px; */
+    background: rgba(255,255,255,0.2);
+}
+
+.uploaderPopup {
+    background: SkyBlue;
+    opacity: 0.9;
+    position: absolute;
+    left: 30%;
+    top: 25%;
+    border: 2px solid SkyBlue;
+    border-radius: 20px;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    font-size: 35px;
+    color: white;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.crossButton {
+    align-self: flex-start;
+    text-align: center;
+    width: 35px;
+    padding: 5px;
+    margin-left: 450px;
+    margin-top: 10px;
+    background: rgba(255,255,255,0.8);
+    border: 2px solid SkyBlue;
+    cursor: pointer;
+    height: 35px;
+    color: SkyBlue;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+#myInput {
+    position: fixed;
+    transform: translateX(10000px);
+}
+
+.popupText {
+    margin-top: 60px;
+}
+
+.uploadLabel {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.8);
+    border-radius: 30px;
+    color: SkyBlue;
+    width: 225px;
+    height: 40px;
+    font-size: 20px;
+    border: 2px solid SkyBlue;
+    margin-top: 80px;
+
+}
+
+.veryFakeFooter {
+    display: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background: SkyBlue;
+
+}
+
+/* ======  ========= PROFILE ==========  ========== */
+
+.profileBox {
+    /* border: 2px solid SkyBlue; */
+    width: 100%;
+    height: 600px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.avatarImageinProfile {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 50px;
+}
+
+.profileBio {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /* border-bottom: 1px solid SkyBlue; */
+    font-size: 20px;
+    width: 100%;
+}
+
+.profileName {
+    border-bottom: 1px solid SkyBlue;
+    width: 100%;
+    text-align: center;
+}
+
+.updateBio {
+    width: 100%;
+    resize: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid SkyBlue;
+    font-size: 20px;
+    outline: none;
+
+
+}
+
+.updateBioButton {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    margin: 2px;
+    background-color: SkyBlue;
+    border: 2px solid SkyBlue;
+    cursor: pointer;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+
+}
+
+.updateBioButton:hover {
+    ox-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05) inset,
+        5px 5px 25px rgba(82, 168, 236, 0.6);
+    /* background-color: SkyBlue; */
+    opacity: 1;
+    box-shadow: 0 0 5px;
+    /* border: none ; */
+}
+
+.switcherForFun {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 25px;
+    width: 100%;
+    align-items: center;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.profileInfo {
+    margin-left: 100px;
+    width: 250px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    color: SkyBlue;
+}
+
+/* ====== Other Users Profiles ========= =========== */
+
+
+
+.profileUsersBox {
+    /* border: 2px solid SkyBlue; */
+    width: 100%;
+
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    /* align-items: flex-start; */
+    justify-content: flex-start;
+}
+
+.otherUserInfo {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    border: 2px solid SkyBlue;
+    margin-left: 40px;
+    align-items: center;
+}
+
+.avatarImageinOthersProfile {
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profileOtherInfo {
+    padding: 5px;
+    text-align: center;
+    color: SkyBlue;
+}
+
+.friendButton {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    margin: 2px;
+    background-color: SkyBlue;
+    border: 2px solid SkyBlue;
+    cursor: pointer;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.theWall {
+
+border: solid 2px SkyBlue;
+width: 500px;
+height: 600px;
+margin-left: 20px;
+align-items: center;
+justify-content: center;
+display: flex;
+color: SkyBlue;
+}
+
+.firendsOfaFriend {
+    margin-left: 50px;
+    color: SkyBlue;
+    width: 150px;
+    height: 600px;
+    overflow: scroll;
+
+
+}
+/* ====== Switcher ========= =========== */
+
+.switch {
+    margin-left: 50px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+}
+
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: SkyBlue;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px SkyBlue;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ========= ========= Friends ======== ========= */
+
+.boxOfFriends {
+    margin-left: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.imageOfAFriendinFriends {
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.realFriends{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.almostFriends {
+    margin-top: 20px;
+
+}
+
+.chatWithFriend {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    margin: 2px;
+    background-color: SkyBlue;
+    border: 2px solid SkyBlue;
+    cursor: pointer;
+    color: white;
+    font-size: 13px;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.friendBox {
+    margin-left: 10px;
+    width: 125px;
+    border: 2px solid SkyBlue;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.friendsButton {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    margin: 2px;
+    background-color: SkyBlue;
+    border: 2px solid SkyBlue;
+    cursor: pointer;
+    color: white;
+    font-size: 13px;
+    border-radius: 5px;
+}
+
+.nameOfTheFriend {
+
+    text-align: center;
+    color: SkyBlue;
+}
+
+.friendsBoxTitle {
+    margin-top: 25px;
+
+    color: SkyBlue;
+    border-bottom: 1px solid SkyBlue;
+    width: 1235px;
+}
+
+/* ===== ====== Chat ======= ========= */
+
+.chatBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 600px;
+
+
+}
+
+.imageInChat {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    border-bottom: 1px solid SkyBlue;
+
+}
+
+.chatWithUsers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.chatMessages {
+    margin-top: 20px;
+    width: 600px;
+    height: 300px;
+    border-left: 2px solid Skyblue;
+    border-right: 2px solid Skyblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    text-align: center;
+}
+
+.chatMsg {
+ margin-top: 10px;
+ margin-bottom: 5px;
+}
+
+.chatUser {
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.chats {
+    color: SkyBlue;
+    margin-top:10px;
+    margin-left: 10px;
+    width: 400px;
+    height: auto;
+    padding: 5px;
+    border: 2px solid SkyBlue;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.chattingNowText{
+    border-bottom: 2px solid SkyBlue;
+}
+
+.imageOfAFriendInChat {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.chatMessageInput {
+    font-size: 25px;
+    margin: 30px;
+    padding: 10px;
+    width: 600px;
+    height: 60px;
+    border-top: 2px solid Skyblue;
+    border-bottom: 2px solid Skyblue;
+    resize: none;
+    outline: none;
+    border:none;
+}
+
+.chatInputBox {
+    margin-top: 30px;
+    padding: 10px;
+    width: 600px;
+    height: 70px;
+    border-top: 2px solid Skyblue;
+    border-bottom: 2px solid Skyblue;
+    display: flex;
+    align-items: center;
+}
+
+.whoIsInChat {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: flex;
+    width: 200px;
+    height: 400px;
+    align-items: center;
+    flex-direction: column;
+    color: SkyBlue;
+}
+
+.imageOfAFriend {
+    margin-top: 3px;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    border-radius: 50%;
+
+}
+/* ======  =====  Animated Bubbles Here: ===== ======  */
+
+#bubbles {
+    /* height: 100%;
+    width: 100%; */
+    /* padding: 100px 0; */
+}
+
+.bubble {
+    width: 80px;
+    height: 80px;
+    background: lightblue;
+    border-radius: 200px;
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    position: absolute;
+}
+
+.x1 {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0.2;
+    -webkit-animation: moveclouds 15s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 15s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -o-animation: moveclouds 15s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+}
+
+.x2 {
+    left: 200px;
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 0.5;
+    -webkit-animation: moveclouds 25s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 25s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+    -o-animation: moveclouds 25s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+}
+.x3 {
+    left: 350px;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.3;
+    -webkit-animation: moveclouds 20s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 20s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -o-animation: moveclouds 20s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+}
+.x4 {
+    left: 470px;
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    transform: scale(0.75);
+    opacity: 0.35;
+    -webkit-animation: moveclouds 18s linear infinite,
+        sideWays 2s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 18s linear infinite,
+        sideWays 2s ease-in-out infinite alternate;
+    -o-animation: moveclouds 18s linear infinite,
+        sideWays 2s ease-in-out infinite alternate;
+}
+.x5 {
+    left: 150px;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.3;
+    -webkit-animation: moveclouds 7s linear infinite,
+        sideWays 1s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 7s linear infinite,
+        sideWays 1s ease-in-out infinite alternate;
+    -o-animation: moveclouds 7s linear infinite,
+        sideWays 1s ease-in-out infinite alternate;
+}
+
+.x6 {
+    left: 175px;
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    transform: scale(0.3);
+    opacity: 0.2;
+    -webkit-animation: moveclouds 20s linear infinite,
+        sideWays 6s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 20s linear infinite,
+        sideWays 6s ease-in-out infinite alternate;
+    -o-animation: moveclouds 20s linear infinite,
+        sideWays 6s ease-in-out infinite alternate;
+}
+
+.x7 {
+    left: 1000px;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0.2;
+    -webkit-animation: moveclouds 8s linear infinite,
+        sideWays 3s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 8s linear infinite,
+        sideWays 3s ease-in-out infinite alternate;
+    -o-animation: moveclouds 8s linear infinite,
+        sideWays 3s ease-in-out infinite alternate;
+}
+
+.x8 {
+    left: 1100px;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0.2;
+    -webkit-animation: moveclouds 10s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 10s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+    -o-animation: moveclouds 10s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+}
+
+.x9 {
+    left: 900px;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0.2;
+    -webkit-animation: moveclouds 15s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 15s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -o-animation: moveclouds 15s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+}
+
+.x10 {
+    left: 840px;
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 0.5;
+    -webkit-animation: moveclouds 25s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 25s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+    -o-animation: moveclouds 25s linear infinite,
+        sideWays 5s ease-in-out infinite alternate;
+}
+
+.x11 {
+    left: 1134px;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.3;
+    -webkit-animation: moveclouds 20s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 20s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+    -o-animation: moveclouds 20s linear infinite,
+        sideWays 4s ease-in-out infinite alternate;
+}
+
+.x12 {
+    left: 765px;
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    transform: scale(0.75);
+    opacity: 0.35;
+    -webkit-animation: moveclouds 18s linear infinite,
+        sideWays 2s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 18s linear infinite,
+        sideWays 2s ease-in-out infinite alternate;
+    -o-animation: moveclouds 18s linear infinite,
+        sideWays 2s ease-in-out infinite alternate;
+}
+
+.x13 {
+    left: 1320px;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.3;
+    -webkit-animation: moveclouds 7s linear infinite,
+        sideWays 1s ease-in-out infinite alternate;
+    -moz-animation: moveclouds 7s linear infinite,
+        sideWays 1s ease-in-out infinite alternate;
+    -o-animation: moveclouds 7s linear infinite,
+        sideWays 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes moveclouds {
+    0% {
+        top: 750px;
+    }
+    100% {
+        top: -500px;
+    }
+}
+
+@-webkit-keyframes sideWays {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
+}
+
+@-moz-keyframes moveclouds {
+    0% {
+        top: 750px;
+    }
+
+    100% {
+        top: -500px;
+    }
+}
+
+@-moz-keyframes sideWays {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
+}
+@-o-keyframes moveclouds {
+    0% {
+        top: 750px;
+    }
+    100% {
+        top: -500px;
+    }
+}
+
+@-o-keyframes sideWays {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
+}

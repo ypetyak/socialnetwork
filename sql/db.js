@@ -1,6 +1,6 @@
 const spicedPg = require("spiced-pg");
 
-
+let secrets;
 
 if (process.env.NODE_ENV == "production") {
     secrets = process.env; // in prod the secrets are environment variables

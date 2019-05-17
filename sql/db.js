@@ -1,5 +1,12 @@
 const spicedPg = require("spiced-pg");
-const secrets = require("../secrets.json");
+
+
+
+if (process.env.NODE_ENV == "production") {
+    secrets = process.env; // in prod the secrets are environment variables
+} else {
+    secrets = require("./secrets"); // secrets.json is in .gitignore
+}
 
 const dbUrl = secrets.dbUrl;
 
@@ -132,7 +139,7 @@ exports.receiveFriends = id => {
 exports.getUsersByIds = arrayOfIds => {
     const q = `SELECT first, last, id, bio, avatar_url FROM users WHERE id = ANY($1)`;
     return db.query(q, [arrayOfIds]);
-}
+};
 
 // ============= =========== CHAT ========== ===========
 
@@ -146,10 +153,10 @@ exports.getRecentMessages = () => {
     LIMIT 10;
     `;
 
-    return db.query(q)
-}
+    return db.query(q);
+};
 
-    exports.saveChatMsg = (userId, message) => {
+exports.saveChatMsg = (userId, message) => {
     console.log("in save chat:", message);
     var q = `
     INSERT INTO chat (userId ,message)
@@ -172,8 +179,8 @@ exports.getFriendsOfAFriend = (friendId) => {
 
     `;
 
-    return db.query(q, [friendId])
-}
+    return db.query(q, [friendId]);
+};
 
 // ============= GET ALL EVENTS ===================
 
@@ -186,5 +193,5 @@ exports.getPrivateChatMessages = (userId, friendId) => {
 
 
     `;
-    return db.query(q, {friendId})
-}
+    return db.query(q, {friendId});
+};

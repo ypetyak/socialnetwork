@@ -10,7 +10,13 @@ const io = require("socket.io")(server, {origins: "localhost:8080"}); // we pass
 
 /// ============
 
-const db = require("./sql/db.js");
+let db;
+
+if (process.env.NODE_ENV == "production") {
+    db = process.env.DATABASE_URL;
+} else {
+    db = require("./sql/db.js");
+}
 
 const bodyParser = require("body-parser");
 const csurf = require("csurf");

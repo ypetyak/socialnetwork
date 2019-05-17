@@ -15,7 +15,7 @@ const db = require("./sql/db.js");
 const bodyParser = require("body-parser");
 const csurf = require("csurf");
 
-const secrets = require("./secrets.json");
+// const secrets = require("./secrets.json");
 
 const config = require("./config");
 const s3 = require("./s3");
@@ -200,7 +200,7 @@ app.get("/friendsOfAFriend", (req, res) => {
 
     db.getFriendsOfAFriend(friendId).then(results => {
         console.log("Results of Friends of a Friend: ", results.rows);
-        res.json(results.rows)
+        res.json(results.rows);
     }).catch(error => {
         console.log("Error in GET friends of a friend", error);
     });
@@ -329,12 +329,12 @@ io.on('connection', function(socket) {
     // store socketid and userid in wariables
 
     const userId = socket.request.session.userId;
-    const socketId = socket.id
+    const socketId = socket.id;
 
     // add socket id with user id to the object
-    onlineUsers[socketId] = userId
+    onlineUsers[socketId] = userId;
 
-	// console.log("Onlone Users: ", onlineUsers);
+    // console.log("Onlone Users: ", onlineUsers);
 
 
     let arrayOfUserIds = Object.values(onlineUsers); // gives an array of all righthand values of the Object
@@ -349,8 +349,8 @@ io.on('connection', function(socket) {
 
         // now we have to take this results and emit them.
 
-        socket.emit('onlineUsers', results.rows)
-    })
+        socket.emit('onlineUsers', results.rows);
+    });
 
     //      we can also emit to everyone but the person who has just connected
 
@@ -359,8 +359,8 @@ io.on('connection', function(socket) {
         db.getUserInfo(socket.request.session.userId).then(results => {
             // console.log("New user logged in info: ", results.rows[0]);
 
-            socket.broadcast.emit('newUserOnline', results.rows)
-        })
+            socket.broadcast.emit('newUserOnline', results.rows);
+        });
     }
     //     socket.broadcast.emit('userJoined', payload)
     //
@@ -374,7 +374,7 @@ io.on('connection', function(socket) {
 
     db.getRecentMessages().then(results => {
         // console.log("List of our chat messages: ", results.rows);
-        socket.emit('chatMessages', results.rows)
+        socket.emit('chatMessages', results.rows);
     });
 
     // socket.on('chatMessage', function(message) {
@@ -395,8 +395,8 @@ io.on('connection', function(socket) {
             // console.log("Results from chat search: ", results.rows  );
         }).catch(error => {
             console.log("Error in Private Chat Messages Get: ", error);
-        })
-    })
+        });
+    });
 
     socket.on("chat", message => {
 
@@ -424,20 +424,20 @@ io.on('connection', function(socket) {
         for (var key in onlineUsers) {
             // console.log(onlineUsers[key]);
      		if (onlineUsers[key] == data) {
-                  // console.log("KEY", key);
+                // console.log("KEY", key);
         		io.sockets.sockets[key].emit("notification", {
             		notification: true,
                     message: "New Friend Request!",
-                  });
-              }
-          }
-      });
+                });
+            }
+        }
+    });
 
     // ======== ======== ========= ======== ======= ======
 
     socket.on('disconnect', function() {
 
-        delete onlineUsers[socket.id]
+        delete onlineUsers[socket.id];
 
         console.log("DISCONNECT: ", onlineUsers);
         console.log("CHECK DISCONNECT", Object.values(onlineUsers).includes(userId));
@@ -446,13 +446,13 @@ io.on('connection', function(socket) {
             console.log("Id is not there");
             console.log(`socket with the id ${socket.id} is now disconnected`);
 
-            io.sockets.emit('disonnect', userId)
+            io.sockets.emit('disonnect', userId);
         }
 
         // in this situation there is no difference between emit and broadcast
         // plurar if io.sockets
 
-    })
+    });
     //
     //      function getUsersByIds(arrayOfIds) {
     //      const query = `SELECT * FROM users WHERE id = ANY($1)`;

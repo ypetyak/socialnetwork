@@ -10,7 +10,7 @@ const io = require("socket.io")(server, {origins: "localhost:8080"}); // we pass
 
 /// ============
 
-const db = require("./SQL/db.js");
+const db = require("./sql/db.js");
 
 const bodyParser = require("body-parser");
 const csurf = require("csurf");

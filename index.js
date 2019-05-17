@@ -204,7 +204,7 @@ app.get("/friendsOfAFriend", (req, res) => {
     }).catch(error => {
         console.log("Error in GET friends of a friend", error);
     });
-})
+});
 
 
 /////// ============= ===========  FRIEND REQUEST BUTTON ===============
@@ -391,7 +391,7 @@ io.on('connection', function(socket) {
         // console.log("Private Chat Data: ", data);
         db.getPrivateChatMessages(userId, data).then(results => {
 
-            socket.emit('privateChatMessages', results.rows)
+            socket.emit('privateChatMessages', results.rows);
             // console.log("Results from chat search: ", results.rows  );
         }).catch(error => {
             console.log("Error in Private Chat Messages Get: ", error);
@@ -509,4 +509,4 @@ io.on('connection', function(socket) {
 
 // =======
 
-// cheerio for part 4 in bonus features
+//

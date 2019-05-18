@@ -13,7 +13,7 @@ const io = require("socket.io")(server, {origins: "localhost:8080"}); // we pass
 let db;
 
 if (process.env.NODE_ENV == "production") {
-    db = process.env.DATABASE_URL;
+    db = require(process.env.DATABASE_URL);
 } else {
     db = require("./sql/db.js");
 }

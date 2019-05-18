@@ -10,7 +10,7 @@ if (process.env.NODE_ENV == "production") {
 
 const dbUrl = secrets.dbUrl;
 
-const db = spicedPg(dbUrl);
+const db = spicedPg(process.env.DATABASE_URL || dbUrl);
 
 exports.createUser = (first, last, email, password) => {
     const q = `

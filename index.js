@@ -10,13 +10,15 @@ const io = require("socket.io")(server, {origins: "localhost:8080"}); // we pass
 
 /// ============
 
-let db;
+// let db;
 
-if (process.env.NODE_ENV == "production") {
-    db = require(process.env.DATABASE_URL);
-} else {
-    db = require("./sql/db.js");
-}
+// if (process.env.NODE_ENV == "production") {
+//     db = process.env.DATABASE_URL;
+// } else {
+//     db = require("./sql/db.js");
+// }
+
+const db = require("./sql/db.js");
 
 const bodyParser = require("body-parser");
 const csurf = require("csurf");

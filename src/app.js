@@ -116,89 +116,94 @@ export default class App extends React.Component {
             );
         }
         return (
-            <div className="main">
-                <div className="fakeFooter">
-                    <Bubbles />
-                    <Logo />
-                    <Header />
-                    <ProfilePic
-                        avatar_url={this.state.avatar_url}
-                        first={this.state.first}
-                        last={this.state.last}
-                        clickHandler={this.makeUploaderVisible}
-                    />
-                    <a href="/" onClick={this.logout} className="linkInHeader logoutButton"> Logout </a>
 
-                    {this.state.uploaderIsVisible && (
-                        <Uploader
-                            updateImage={this.updateImage}
-                            closePopup={this.makeUploaderVisible}
-                        />
-                    )}
-                </div>
 
-                <BrowserRouter>
+            <BrowserRouter>
+                <div className="main">
+                    <div className="main">
+                        <div className="fakeFooter">
+                            <Bubbles />
+                            <Logo />
+                            <Header />
+                            <ProfilePic
+                                avatar_url={this.state.avatar_url}
+                                first={this.state.first}
+                                last={this.state.last}
+                                clickHandler={this.makeUploaderVisible}
+                            />
+                            <a href="/" onClick={this.logout} className="linkInHeader logoutButton"> Logout </a>
 
-                    <div className="componentBox">
-
-                        <Route
-                            exact
-                            path="/profile"
-                            render={() => (
-
-                                <div className="profileBox">
-                                    <Profile
-                                        id={this.state.id}
-                                        firstName={this.state.first}
-                                        lastName={this.state.last}
-                                        bio={this.state.bio}
-                                        avatar_url={this.state.avatar_url}
-                                        showBio={this.state.showBio}
-                                        toggleBio={this.toggleBio}
-                                        setBio={this.setBio}
-                                        clickHandler={
-                                            this.makeUploaderVisible
-                                        }
-                                    />
-                                </div>
-
+                            {this.state.uploaderIsVisible && (
+                                <Uploader
+                                    updateImage={this.updateImage}
+                                    closePopup={this.makeUploaderVisible}
+                                />
                             )}
-                        />
-                        <Route
-                            exact
-                            path="/user/:userId"
-                            component={OtherProfiles}
-                        />
+                        </div>
+
+                        <div className="componentBox">
+
+                            <Route
+                                exact
+                                path="/profile"
+                                render={() => (
+
+                                    <div className="profileBox">
+                                        <Profile
+                                            id={this.state.id}
+                                            firstName={this.state.first}
+                                            lastName={this.state.last}
+                                            bio={this.state.bio}
+                                            avatar_url={this.state.avatar_url}
+                                            showBio={this.state.showBio}
+                                            toggleBio={this.toggleBio}
+                                            setBio={this.setBio}
+                                            clickHandler={
+                                                this.makeUploaderVisible
+                                            }
+                                        />
+                                    </div>
+
+                                )}
+                            />
+                            <Route
+                                exact
+                                path="/user/:userId"
+                                component={OtherProfiles}
+                            />
 
 
-                        <Route
-                            exact
-                            path="/listOfUsers"
-                            component={ListOfUsers}
-                        />
-                        <Route exact path="/friends" component={Friends} />
-                        <Route exact path="/onlineUsers" component={OnlineUsers} />
-                        <Route exact path="/chat" component={Chat} />
-                        <Route exact path="/privateChat" component={PrivateChat} />
-                        <Route exact path="/" component={Home} />
-                        <Route
-                            exact path="/notification"
-                            component={Notification}
-                        />
+                            <Route
+                                exact
+                                path="/listOfUsers"
+                                component={ListOfUsers}
+                            />
+                            <Route exact path="/friends" component={Friends} />
+                            <Route exact path="/onlineUsers" component={OnlineUsers} />
+                            <Route exact path="/chat" component={Chat} />
+                            <Route exact path="/privateChat" component={PrivateChat} />
+                            <Route exact path="/" component={Home} />
+                            <Route
+                                exact path="/notification"
+                                component={Notification}
+                            />
+                        </div>
                     </div>
-                </BrowserRouter>
-                <div className="veryFakeFooter">
-                    Yevhen Petyak &#9400; 2019
+                    <div className="veryFakeFooter">
+                        Yevhen Petyak &#9400; 2019
+                    </div>
                 </div>
-            </div>
+            </BrowserRouter>
+
+
         );
         // if uploader is visible it should be apploaded. Uploader will be a popup window, user suppose to be able to close popup (set it false).
     }
 }
 
-/// create a rout to extract information from users DB. Name, user id etc. Not password and emails though.
+        /// create a rout to extract information from users DB. Name, user id etc. Not password and emails though.
 
-/// profile Pic should return img tag with url etc.
+        /// profile Pic should return img tag with url etc.
 
 // <ProfilePic
 //     imageUrl={this.state.imageUrl}

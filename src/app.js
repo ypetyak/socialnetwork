@@ -8,6 +8,10 @@ import Chat from "./chat";
 import PrivateChat from "./privateChat";
 import Home from "./home";
 import Header from "./header";
+import Logo from "./logo";
+import ProfilePic from "./profilePic";
+import Uploader from "./uploader";
+import Bubbles from "./bubbles";
 
 import OnlineUsers from "./onlineUsers";
 import Notification from './notification';
@@ -113,7 +117,25 @@ export default class App extends React.Component {
         }
         return (
             <div className="main">
-                <Header />
+                <div className="fakeFooter">
+                    <Bubbles />
+                    <Logo />
+                    <Header />
+                    <ProfilePic
+                        avatar_url={this.state.avatar_url}
+                        first={this.state.first}
+                        last={this.state.last}
+                        clickHandler={this.makeUploaderVisible}
+                    />
+                    <a href="/" onClick={this.logout} className="linkInHeader logoutButton"> Logout </a>
+
+                    {this.state.uploaderIsVisible && (
+                        <Uploader
+                            updateImage={this.updateImage}
+                            closePopup={this.makeUploaderVisible}
+                        />
+                    )}
+                </div>
 
                 <BrowserRouter>
 

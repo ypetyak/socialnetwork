@@ -9,12 +9,13 @@ import ListOfUsers from "./listOfUsers";
 import Friends from "./friends";
 import Chat from "./chat";
 import PrivateChat from "./privateChat";
+import Home from "./home";
 
 import OnlineUsers from "./onlineUsers";
 import Notification from './notification';
 
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import Profile from "./profile";
 
 export default class App extends React.Component {
@@ -118,11 +119,10 @@ export default class App extends React.Component {
                     <Bubbles />
                     <Logo />
                     <div className="linkBoxInHeader">
-                        <a href="/profile" className="linkInHeader"> Profile </a>
-                        <a href="/" className="linkInHeader"> Home </a>
-                        <a href="/friends" className="linkInHeader"> Friends </a>
-                        <a href="/onlineUsers" className="linkInHeader textTooBigInHeader"> Online Users </a>
-                        <a href="/chat" className="linkInHeader"> Chat </a>
+                        <Link className="linkInHeader" to="/profile">Profile</Link>
+                        <Link className="linkInHeader" to="/">Home</Link>
+                        <Link className="linkInHeader textTooBigInHeader" to="/onlineUsers">Online Users</Link>
+                        <Link className="linkInHeader" to="/chat">Chat</Link>
                     </div>
                     <ProfilePic
                         avatar_url={this.state.avatar_url}
@@ -181,6 +181,7 @@ export default class App extends React.Component {
                         <Route exact path="/onlineUsers" component={OnlineUsers} />
                         <Route exact path="/chat" component={Chat} />
                         <Route exact path="/privateChat" component={PrivateChat} />
+                        <Route exact path="/" component={Home} />
                             <Route
                                 exact path="/notification"
                                 component={Notification}

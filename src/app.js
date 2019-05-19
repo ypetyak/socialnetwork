@@ -130,7 +130,7 @@ export default class App extends React.Component {
                         last={this.state.last}
                         clickHandler={this.makeUploaderVisible}
                     />
-                <a href="/" onClick={this.logout} className="linkInHeader logoutButton"> Logout </a>
+                    <a href="/" onClick={this.logout} className="linkInHeader logoutButton"> Logout </a>
 
                     {this.state.uploaderIsVisible && (
                         <Uploader

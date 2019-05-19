@@ -7,7 +7,7 @@ import Friends from "./friends";
 import Chat from "./chat";
 import PrivateChat from "./privateChat";
 import Home from "./home";
-import Header from ".header";
+import Header from "./header";
 
 import OnlineUsers from "./onlineUsers";
 import Notification from './notification';

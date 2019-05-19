@@ -1,21 +1,19 @@
 import React from "react";
 import axios from "./axios";
-import Logo from "./logo";
-import ProfilePic from "./profilePic";
-import Uploader from "./uploader";
-import Bubbles from "./bubbles";
+
 import OtherProfiles from "./OtherProfiles";
 import ListOfUsers from "./listOfUsers";
 import Friends from "./friends";
 import Chat from "./chat";
 import PrivateChat from "./privateChat";
 import Home from "./home";
+import Header from ".header";
 
 import OnlineUsers from "./onlineUsers";
 import Notification from './notification';
 
 
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Profile from "./profile";
 
 export default class App extends React.Component {
@@ -115,62 +113,40 @@ export default class App extends React.Component {
         }
         return (
             <div className="main">
-            
-                <BrowserRouter>
-                <div className="fakeFooter">
-                    <Bubbles />
-                    <Logo />
-                    <div className="linkBoxInHeader">
-                        <Link className="linkInHeader" to="/profile">Profile</Link>
-                        <Link className="linkInHeader" to="/">Home</Link>
-                        <Link className="linkInHeader textTooBigInHeader" to="/onlineUsers">Online Users</Link>
-                        <Link className="linkInHeader" to="/chat">Chat</Link>
-                    </div>
-                    <ProfilePic
-                        avatar_url={this.state.avatar_url}
-                        first={this.state.first}
-                        last={this.state.last}
-                        clickHandler={this.makeUploaderVisible}
-                    />
-                    <a href="/" onClick={this.logout} className="linkInHeader logoutButton"> Logout </a>
+                <Header />
 
-                    {this.state.uploaderIsVisible && (
-                        <Uploader
-                            updateImage={this.updateImage}
-                            closePopup={this.makeUploaderVisible}
-                        />
-                    )}
-                </div>
+                <BrowserRouter>
+
                     <div className="componentBox">
 
-                            <Route
-                                exact
-                                path="/profile"
-                                render={() => (
+                        <Route
+                            exact
+                            path="/profile"
+                            render={() => (
 
-                                    <div className="profileBox">
-                                        <Profile
-                                            id={this.state.id}
-                                            firstName={this.state.first}
-                                            lastName={this.state.last}
-                                            bio={this.state.bio}
-                                            avatar_url={this.state.avatar_url}
-                                            showBio={this.state.showBio}
-                                            toggleBio={this.toggleBio}
-                                            setBio={this.setBio}
-                                            clickHandler={
-                                                this.makeUploaderVisible
-                                            }
-                                        />
-                                    </div>
+                                <div className="profileBox">
+                                    <Profile
+                                        id={this.state.id}
+                                        firstName={this.state.first}
+                                        lastName={this.state.last}
+                                        bio={this.state.bio}
+                                        avatar_url={this.state.avatar_url}
+                                        showBio={this.state.showBio}
+                                        toggleBio={this.toggleBio}
+                                        setBio={this.setBio}
+                                        clickHandler={
+                                            this.makeUploaderVisible
+                                        }
+                                    />
+                                </div>
 
-                                )}
-                            />
-                            <Route
-                                exact
-                                path="/user/:userId"
-                                component={OtherProfiles}
-                            />
+                            )}
+                        />
+                        <Route
+                            exact
+                            path="/user/:userId"
+                            component={OtherProfiles}
+                        />
 
 
                         <Route
@@ -183,11 +159,11 @@ export default class App extends React.Component {
                         <Route exact path="/chat" component={Chat} />
                         <Route exact path="/privateChat" component={PrivateChat} />
                         <Route exact path="/" component={Home} />
-                            <Route
-                                exact path="/notification"
-                                component={Notification}
-                            />
-                        </div>
+                        <Route
+                            exact path="/notification"
+                            component={Notification}
+                        />
+                    </div>
                 </BrowserRouter>
                 <div className="veryFakeFooter">
                     Yevhen Petyak &#9400; 2019

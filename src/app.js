@@ -129,6 +129,7 @@ export default class App extends React.Component {
                                 <Link className="linkInHeader" to="/friends">Friends</Link>
                                 <Link className="linkInHeader textTooBigInHeader" to="/onlineUsers">Online Users</Link>
                                 <Link className="linkInHeader" to="/chat">Chat</Link>
+                                <a href="/chat" className="linkInHeader"> Chat </a>
                             </div>
                             <ProfilePic
                                 avatar_url={this.state.avatar_url}

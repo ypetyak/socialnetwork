@@ -115,6 +115,8 @@ export default class App extends React.Component {
         }
         return (
             <div className="main">
+            
+                <BrowserRouter>
                 <div className="fakeFooter">
                     <Bubbles />
                     <Logo />
@@ -139,7 +141,6 @@ export default class App extends React.Component {
                         />
                     )}
                 </div>
-                <BrowserRouter>
                     <div className="componentBox">
 
                             <Route

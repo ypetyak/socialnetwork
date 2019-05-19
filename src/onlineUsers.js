@@ -15,11 +15,11 @@ class OnlineUsers extends React.Component {
 
     render() {
         // console.log("We are in our component for onlineUsers: ", this.props);
-        if (!this.props.users) {
-            return (
-                <div> Loading... </div> // you can replace it with some funny or useful image/text
-            );
-        }
+        // if (!this.props.users) {
+        //     return (
+        //         <div> Loading... </div> // you can replace it with some funny or useful image/text
+        //     );
+        // }
         return (
             <div className="boxOfFriends">
                 <h2 className="friendsBoxTitle"> Online Users </h2>

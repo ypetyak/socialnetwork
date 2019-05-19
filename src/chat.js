@@ -9,7 +9,7 @@ class Chat extends Component {
         this.savechatMessage = this.savechatMessage.bind(this);
         this.scrollToBottom = this.scrollToBottom.bind(this);
     }
-    componentDidMount() {}
+    componentDidMount() { }
 
     savechatMessage(e) {
         if (e.which === 13) {
@@ -47,45 +47,45 @@ class Chat extends Component {
 
             >
                 <div className="chatWithUsers">
-                    <div className = "chatMessages"
+                    <div className="chatMessages"
                         ref={element => (this.element = element)}
-                        >
-                    {this.props.messages.map(message => (
-                        <div className="chats" key={message.chatid}>
-                            <div className="imageInChat">
-                                <a href={`/user/${message.id}`}><img className="imageOfAFriend" src={message.avatar_url} /></a>
+                    >
+                        {this.props.messages.map(message => (
+                            <div className="chats" key={message.chatid}>
+                                <div className="imageInChat">
+                                    <a href={`/user/${message.id}`}><img className="imageOfAFriend" src={message.avatar_url} /></a>
 
-                            <div className="chatUser">
+                                    <div className="chatUser">
 
 
-                                    <p>{message.first} {message.last} - {message.ts}</p>
+                                        <p>{message.first} {message.last} - {message.ts}</p>
 
+                                    </div>
+                                </div>
+                                <div className="chatMsg">
+
+                                    <p>{message.message}</p>
+                                </div>
                             </div>
+                        ))}
+                    </div>
+                    <div className="whoIsInChat">
+                        <h2 className="chattingNowText"> Chatting now: </h2>
+                        {this.props.onlineUsers.map(user => (
+                            <div className="whoIsInChatImage" key={user.id}>
+                                <a href={`/user/${user.id}`}><img className="imageOfAFriendInChat" src={user.avatar_url} /></a>
                             </div>
-                            <div className="chatMsg">
+                        ))}
+                    </div>
 
-                                <p>{message.message}</p>
-                            </div>
-                        </div>
-                    ))}
                 </div>
-                <div className="whoIsInChat">
-                    <h2 className="chattingNowText"> Chatting now: </h2>
-                   {this.props.onlineUsers.map(user => (
-                        <div className="whoIsInChatImage" key={user.id}>
-                          <a href={`/user/${user.id}`}><img className="imageOfAFriendInChat" src={user.avatar_url} /></a>
-                  </div>
-                   ))}
-                </div>
-
-            </div>
 
                 <div className="chatInputBox">
-                <textarea
-                    className="chatMessageInput"
-                    onKeyDown={this.savechatMessage}
-                    placeholder="type message"
-                />
+                    <textarea
+                        className="chatMessageInput"
+                        onKeyDown={this.savechatMessage}
+                        placeholder="type message"
+                    />
                 </div>
 
             </div>

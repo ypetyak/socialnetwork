@@ -7,7 +7,6 @@ import Friends from "./friends";
 import Chat from "./chat";
 import PrivateChat from "./privateChat";
 import Home from "./home";
-import Header from "./header";
 import Logo from "./logo";
 import ProfilePic from "./profilePic";
 import Uploader from "./uploader";
@@ -17,7 +16,7 @@ import OnlineUsers from "./onlineUsers";
 import Notification from './notification';
 
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import Profile from "./profile";
 
 export default class App extends React.Component {
@@ -124,7 +123,13 @@ export default class App extends React.Component {
                         <div className="fakeFooter">
                             <Bubbles />
                             <Logo />
-                            <Header />
+                            <div className="linkBoxInHeader">
+                                <Link className="linkInHeader" to="/profile">Profile</Link>
+                                <Link className="linkInHeader" to="/">Home</Link>
+                                <Link className="linkInHeader" to="/friends">Friends</Link>
+                                <Link className="linkInHeader textTooBigInHeader" to="/onlineUsers">Online Users</Link>
+                                <Link className="linkInHeader" to="/chat">Chat</Link>
+                            </div>
                             <ProfilePic
                                 avatar_url={this.state.avatar_url}
                                 first={this.state.first}

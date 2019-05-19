@@ -51,36 +51,36 @@ class PrivateChat extends Component {
 
             >
                 <div className="chatWithUsers">
-                    <div className = "chatMessages"
+                    <div className="chatMessages"
                         ref={element => (this.element = element)}
-                        >
-                    {this.props.messages.map(message => (
-                        <div className="chats" key={message.chatid}>
-                            <div className="imageInChat">
-                                <a href={`/user/${message.id}`}><img className="imageOfAFriend" src={message.avatar_url} /></a>
+                    >
+                        {this.props.messages.map(message => (
+                            <div className="chats" key={message.chatid}>
+                                <div className="imageInChat">
+                                    <a href={`/user/${message.id}`}><img className="imageOfAFriend" src={message.avatar_url} /></a>
 
-                            <div className="chatUser">
+                                    <div className="chatUser">
 
 
-                                    <p>{message.first} {message.last} - {message.ts}</p>
+                                        <p>{message.first} {message.last} - {message.ts}</p>
 
+                                    </div>
+                                </div>
+                                <div className="chatMsg">
+
+                                    <p>{message.message}</p>
+                                </div>
                             </div>
-                            </div>
-                            <div className="chatMsg">
-
-                                <p>{message.message}</p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
 
                 <div className="chatInputBox">
-                <textarea
-                    className="chatMessageInput"
-                    onKeyDown={this.savechatMessage}
-                    placeholder="type message"
-                />
+                    <textarea
+                        className="chatMessageInput"
+                        onKeyDown={this.savechatMessage}
+                        placeholder="type message"
+                    />
                 </div>
 
             </div>

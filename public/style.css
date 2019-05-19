@@ -438,6 +438,18 @@ display: flex;
 color: SkyBlue;
 }
 
+.homepageWall {
+    border: solid 2px SkyBlue;
+width: 800px;
+height: 600px;
+align-self: center;
+align-items: center;
+justify-content: center;
+display: flex;
+color: SkyBlue;
+
+}
+
 .firendsOfaFriend {
     margin-left: 50px;
     color: SkyBlue;

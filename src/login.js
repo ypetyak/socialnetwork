@@ -21,7 +21,7 @@ export default class Login extends React.Component {
             })
             .then(({ data }) => {
                 if (data.success) {
-                    location.replace("/nextpage");
+                    location.replace("/");
                 } else {
                     this.setState({
                         error: true

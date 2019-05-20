@@ -39,7 +39,7 @@ class Chat extends Component {
                     <p> Loading... </p>
                 </div>
 
-            )
+            );
         }
         return (
             <div

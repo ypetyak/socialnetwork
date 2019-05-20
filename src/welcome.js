@@ -33,10 +33,3 @@ export default function Welcome() {
         </div>
     );
 }
-
-// <HashRouter>
-//     <div>
-//         <Route exact path="/" component={Registration} />
-//         <Route path="/login" component={Login} />
-//     </div>
-// </HashRouter>

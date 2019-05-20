@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "./axios";
 
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
 import OtherProfiles from "./OtherProfiles";
-import ListOfUsers from "./listOfUsers";
 import Friends from "./friends";
 import Chat from "./chat";
 import PrivateChat from "./privateChat";
@@ -11,13 +12,12 @@ import Logo from "./logo";
 import ProfilePic from "./profilePic";
 import Uploader from "./uploader";
 import Bubbles from "./bubbles";
-
+import Profile from "./profile";
 import OnlineUsers from "./onlineUsers";
 import Notification from './notification';
 
 
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import Profile from "./profile";
+
 
 export default class App extends React.Component {
     constructor(props) {
@@ -93,7 +93,7 @@ export default class App extends React.Component {
                 bio: e.target.value,
                 showBio: false
             });
-
+            console.log("BIO: ", e.target.value);
             axios
                 .post("/profile", {
                     bio: e.target.value
@@ -129,7 +129,6 @@ export default class App extends React.Component {
                                 <Link className="linkInHeader" to="/friends">Friends</Link>
                                 <Link className="linkInHeader textTooBigInHeader" to="/onlineUsers">Online Users</Link>
                                 <Link className="linkInHeader" to="/chat">Chat</Link>
-                                <a href="/chat" className="linkInHeader"> Chat </a>
                             </div>
                             <ProfilePic
                                 avatar_url={this.state.avatar_url}
@@ -177,13 +176,6 @@ export default class App extends React.Component {
                                 path="/user/:userId"
                                 component={OtherProfiles}
                             />
-
-
-                            <Route
-                                exact
-                                path="/listOfUsers"
-                                component={ListOfUsers}
-                            />
                             <Route exact path="/friends" component={Friends} />
                             <Route exact path="/onlineUsers" component={OnlineUsers} />
                             <Route exact path="/chat" component={Chat} />
@@ -207,13 +199,3 @@ export default class App extends React.Component {
     }
 }
 
-        /// create a rout to extract information from users DB. Name, user id etc. Not password and emails though.
-
-        /// profile Pic should return img tag with url etc.
-
-// <ProfilePic
-//     imageUrl={this.state.imageUrl}
-//     first={this.state.first}
-//     last={this.state.last}
-//     clickHandler={this.makeUploaderVisible}
-// />;

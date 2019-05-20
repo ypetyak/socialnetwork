@@ -6,7 +6,7 @@ const compression = require("compression");
 
 const server = require("http").Server(app); // we require node server, so we wrap express server into node
 
-const io = require("socket.io")(server, {origins: "https://ypetyak-socialnetwork.herokuapp.com:*"}); // we pass our wrapped server and configuartiona of our web socket. Don't forget to change this if you deploy to heroku you will need type there: "https://mysite.herokuapp.com:* "
+const io = require("socket.io")(server, {origins: "localhost:8080"}, {transports: ['websocket']}); // we pass our wrapped server and configuartiona of our web socket. Don't forget to change this if you deploy to heroku you will need type there: "https://mysite.herokuapp.com:* "
 
 /// ============
 
@@ -168,8 +168,8 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
 
 // =============  ============  UPLOAD BIO INTO THE DATABASE =========
 
-app.post("/profile", (req, res) => {
-    // console.log("Bio in Server: ", req.body.bio);
+app.get("/profile", (req, res) => {
+    console.log("Bio in Server: ", req.body);
     db.uploadBio(req.body.bio, req.session.userId).catch(err => {
         console.log("Error in POST profile, Bio: ", err);
         res.status(500).json({success: false});
@@ -281,25 +281,6 @@ app.get("/listOfFriends", (req, res) => {
     });
 });
 
-// db.returnPassword(req.body.email)
-//     .then(result => {
-//         var sessionObject = result;
-//
-//         var savedPas = result.rows[0].password;
-//
-//         checkPass(req.body.password, savedPas).then(result => {
-//             if (result) {
-//                 req.session = {
-//                     user: {
-//                         userId: sessionObject.rows[0].id,
-//                         firstName: sessionObject.rows[0].first,
-//                         lastName: sessionObject.rows[0].last,
-//                         signID: sessionObject.rows[0].id
-//                     }
-//                 };
-//
-//                 res.redirect("/petition");
-
 app.get("/welcome", function(req, res) {
     if (req.session.userId) {
         return res.redirect("/nextpage");
@@ -342,65 +323,32 @@ io.on('connection', function(socket) {
     // add socket id with user id to the object
     onlineUsers[socketId] = userId;
 
-    // console.log("Onlone Users: ", onlineUsers);
-
-
     let arrayOfUserIds = Object.values(onlineUsers); // gives an array of all righthand values of the Object
-
-    // console.log("Our cool array of users", arrayOfUserIds);
     // put to DB
 
     db.getUsersByIds(arrayOfUserIds).then(results => {
-
-        // console.log("Array of Users: ", results.rows);
-        // results = array of objects that contains users name, email, etc.
-
         // now we have to take this results and emit them.
-
         socket.emit('onlineUsers', results.rows);
     });
 
     //      we can also emit to everyone but the person who has just connected
 
     if (arrayOfUserIds.filter(id => id == socket.request.session.userId).length == 1) {
-        // console.log("We passed the condition");
         db.getUserInfo(socket.request.session.userId).then(results => {
-            // console.log("New user logged in info: ", results.rows[0]);
-
             socket.broadcast.emit('newUserOnline', results.rows);
         });
     }
-    //     socket.broadcast.emit('userJoined', payload)
-    //
-    //
-    //
-    //  prevent one user to appear more
-    //
-    //
 
     // ====== ======= CHAT ========== ========== ==========
 
     db.getRecentMessages().then(results => {
-        // console.log("List of our chat messages: ", results.rows);
         socket.emit('chatMessages', results.rows);
     });
 
-    // socket.on('chatMessage', function(message) {
-    //     console.log("Messege is incoming: ", message);
-    //     io.socket.emit('newChatMessage', {
-    //         message: message,
-    //         userId: socket.request.session.userId,
-    //         timeStamp: new Date().toLocaleDateString() + ' ' + new Date().toLocaleDateString()
-    //     })
-    //
-    // })
 
     socket.on("privateChat", data => {
-        // console.log("Private Chat Data: ", data);
         db.getPrivateChatMessages(userId, data).then(results => {
-
             socket.emit('privateChatMessages', results.rows);
-            // console.log("Results from chat search: ", results.rows  );
         }).catch(error => {
             console.log("Error in Private Chat Messages Get: ", error);
         });
@@ -461,60 +409,6 @@ io.on('connection', function(socket) {
         // plurar if io.sockets
 
     });
-    //
-    //      function getUsersByIds(arrayOfIds) {
-    //      const query = `SELECT * FROM users WHERE id = ANY($1)`;
-    //      return db.query(query, [arrayOfIds]);
-    // }
-    //
-    //     console.log("online users: ", onlineUsers);
+
 });
 
-// Everything in socket.io is based on the events:
-
-// socket.io comes with existing events (8 or 9), but you also can emit your own events.
-
-// something: console.log(socket.request.headers.cookie);
-
-// two issues with socket.io:  cookies and figuring out whats going on
-
-//  we will fix it with some middleware, like:
-
-// io.on("connection", socket => {
-//     console.log(`socket with the id ${socket.id} is now connected`);
-//
-//     socket.on("disconnect", function() {
-//         console.log(`socket with the id ${socket.id} is now disconnected`);
-//     });
-//
-//     socket.emit("hello", {
-//         msg: "Hello, I am a Turtle."
-//     });
-//
-//      socket.emit
-// });
-
-// then we can start listening in a client. Imagine this is start.js or Something
-//
-// import * as io from "socket.io-client";
-//
-//
-// const socket = io.connect();
-//
-// socket.on("hello", data => {
-//     console.log(data.msg);
-// );
-
-// if we want to emit to everyone:
-//
-// socket.broadcast.emit('newArrival', 'someone one new ')
-//
-// or we can send to the specific socket
-//
-// io.sockets.sockets[socket.id].emit('hello', {
-//     msg: 'you look ugly'
-// })
-
-// =======
-
-//

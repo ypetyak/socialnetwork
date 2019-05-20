@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "./axios";
 
-export default function ProfilePic(props) {
+export default function Profile(props) {
+    console.log("Props in profile:", props);
     return (
         <div className="profileBox">
             <div className="profilePicInProfile">
@@ -30,10 +30,10 @@ export default function ProfilePic(props) {
                     <p> Privacy: </p>
                     <label className="switch">
 
-                      <input type="checkbox"></input>
-                      <span className="slider round"></span>
-                  </label>
-              </div>
+                        <input type="checkbox"></input>
+                        <span className="slider round"></span>
+                    </label>
+                </div>
             </div>
         </div>
     );

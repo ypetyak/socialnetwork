@@ -30,7 +30,7 @@ class Friends extends React.Component {
 
                             }} className="chatWithFriend" href="/privateChat">Private Chat</a>
 
-                            <a href={`/user/${friend.id}`}><img className="imageOfAFriendinFriends" src={friend.avatar_url} /></a>
+                            <Link to={`/user/${friend.id}`}><img className="imageOfAFriendinFriends" src={friend.avatar_url} /></Link>
                             <div className="nameOfTheFriend">
                                 <p>
                                     {friend.first} {friend.last}
@@ -55,7 +55,7 @@ class Friends extends React.Component {
                     {this.props.wannabes.map(friend => (
                         <div key={friend.id} className="friendBox">
 
-                            <a href={`/user/${friend.id}`}><img className="imageOfAFriendinFriends" src={friend.avatar_url} /></a>
+                            <Link to={`/user/${friend.id}`}><img className="imageOfAFriendinFriends" src={friend.avatar_url} /></Link>
                             <div className="nameOfTheFriend">
                                 <p>
                                     {friend.first} {friend.last}
@@ -99,40 +99,4 @@ const mapStateToProps = function(state) {
     };
 };
 
-// return {
-//     friends: state.friends.filter(user => user.status == 2),
-//     wannabes: state.friends.filter(user => user.status == 1)
-// };
-
 export default connect(mapStateToProps)(Friends);
-
-// class Not extends React.Component {
-//     render() {
-//         const { users, makeHot } = this.props;
-//         if (!users) {
-//             return null;
-//         }
-//         const notUsers = (
-//             <div className="users">
-//                 {users.map(user => (
-//                     <div className="user">
-//                         <img src={user.image} />
-//                         <div className="buttons">
-//                             <button>Hot</button>
-//                         </div>
-//                     </div>
-//                 ))}
-//             </div>
-//         );
-//         return (
-//             <div id="not">
-//                 {!users.length && <div>Nobody is not hot!</div>}
-//                 {!!users.length && notUsers}
-//                 <nav>
-//                     <Link to="/">Home</Link>
-//                     <Link to="/hot">See who&apos;s hot</Link>
-//                 </nav>
-//             </div>
-//         );
-//     }
-// }

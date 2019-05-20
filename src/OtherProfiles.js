@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "./axios";
-import { Link } from "react-router-dom"; // we need it for nextProps;
+import { Link } from 'react-router-dom';
 import FriendButton from "./button.js";
+
 
 export default class OtherProfiles extends Component {
     constructor(props) {
@@ -11,65 +12,37 @@ export default class OtherProfiles extends Component {
     }
 
     componentDidMount() {
-
-        // console.log(
-        //     "Component Did Moount Props",
-        //     this.props.match.params.userId
-        // );
-
         axios
             .get(`/get-user/${this.props.match.params.userId}`)
             .then(results => {
-                // if (results.data.id == this.props.match.params.userId) {
-                //     this.props.history.push("/");
                 var userData = results.data;
-                //console.log("User Data: ", userData);
-                // }
                 axios.get('/friendsOfAFriend', {
                     params: {
                         friendId: this.props.match.params.userId
                     }
                 }).then(results => {
-                    //console.log("Friends of a Friend Axios: ", results);
-
-                    userData = {...userData, ...results}
-                    //console.log("User Data United: ", userData);
+                    userData = { ...userData, ...results };
                     this.setState(userData);
-                    // console.log("State with New Data: ", this.state);
-                })
-
-
-                // console.log(
-                //     "Response from Axios request in OtherProfiles: ",
-                //     this.state.id
-                // );
+                });
             });
     }
-    // componentWillReceiveProps(nextProps) {
-    //     console.log("Next Props: ", nextProps);
-    //     // if (nextProps.match.params.id != this.props.match.params.id) {
-    //     //     //FETCH USER X INFO
-    //     // }
+
 
     render() {
-        //console.log("State with New Data: ", this.state.data);
-
         if (!this.state.data) {
             return (
-                <div> Loading... </div> // you can replace it with some funny or useful image/text
+                <div> Loading... </div>
             );
         }
 
         return (
-
-
             <div className="profileUsersBox">
                 <div className="otherUserInfo">
                     <img
                         className="avatarImageinOthersProfile"
                         src={this.state.avatar_url}
                     />
-                <div className="profileOtherInfo">
+                    <div className="profileOtherInfo">
                         <h1>
                             {this.state.first} {this.state.last}
                         </h1>
@@ -82,16 +55,16 @@ export default class OtherProfiles extends Component {
                 </div>
                 <div className="firendsOfaFriend">
                     <h2 className="chattingNowText"> Friends with: </h2>
-                        {this.state.data.map(user => (
-                            <div key={user.id} className="friendBox">
-                                <a href={`/user/${user.id}`}><img className="imageOfAFriendinFriends" src={user.avatar_url} /></a>
-                                <div className="nameOfTheFriend">
-                                    <p>
-                                        {user.first} {user.last}
-                                    </p>
-                                </div>
+                    {this.state.data.map(user => (
+                        <div key={user.id} className="friendBox">
+                            <Link to={`/user/${user.id}`}><img className="imageOfAFriendinFriends" src={user.avatar_url} /></Link>
+                            <div className="nameOfTheFriend">
+                                <p>
+                                    {user.first} {user.last}
+                                </p>
                             </div>
-                        ))}
+                        </div>
+                    ))}
 
 
                 </div>
@@ -99,9 +72,3 @@ export default class OtherProfiles extends Component {
         );
     }
 }
-
-// {this.state.data.map(user => (
-//      <div className="whoIsInChatImage" key={user.id}>
-//        <a href={`/user/${user.id}`}><img className="imageOfAFriendInChat" src={user.avatar_url} /></a>
-// </div>
-// ))}

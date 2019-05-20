@@ -16,7 +16,6 @@ export default class Registration extends React.Component {
         this[e.target.name] = e.target.value;
     }
     submit() {
-        // console.log("These: ", this.first, this.email);
         axios
             .post("/registration", {
                 first: this.first,

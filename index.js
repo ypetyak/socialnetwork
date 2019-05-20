@@ -6,7 +6,7 @@ const compression = require("compression");
 
 const server = require("http").Server(app); // we require node server, so we wrap express server into node
 
-const io = require("socket.io")(server, {origins: "localhost:8080"}, {transports: ['websocket']}); // we pass our wrapped server and configuartiona of our web socket. Don't forget to change this if you deploy to heroku you will need type there: "https://mysite.herokuapp.com:* "
+const io = require("socket.io")(server, {origins: "https://ypetyak-socialnetwork.herokuapp.com:*"}, {transports: ['websocket']}); // we pass our wrapped server and configuartiona of our web socket. Don't forget to change this if you deploy to heroku you will need type there: "https://mysite.herokuapp.com:* "
 
 /// ============
 
